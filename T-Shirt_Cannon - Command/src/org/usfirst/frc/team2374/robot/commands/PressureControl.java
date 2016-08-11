@@ -11,7 +11,7 @@ public class PressureControl extends CommandBase {
     }
 
     protected void execute() {
-        if (CommandBase.pneumatics.isPressurized() && !CommandBase.pneumatics.isEnabled())       
+        if (CommandBase.pneumatics.isPressurized() && CommandBase.pneumatics.isEnabled())       
             CommandBase.pneumatics.stopCompressor();
         else
             if(!CommandBase.pneumatics.isEnabled())

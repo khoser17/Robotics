@@ -38,5 +38,7 @@ public class RobotMap {
 	//Analog In
 	public static int turretGyro = 1;
 	
-	//DIO
+	//Relay
+	public static int rollerRelay = 0;
+	public static int pusherRelay = 1;
 }

@@ -1,15 +1,21 @@
 package org.usfirst.frc.team2374.robot.subsystems;
 
+import org.usfirst.frc.team2374.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Gun extends Subsystem {
 
-	SpeedController gunPWM;
+	Relay roller;
+	Relay pusher;
 	
 	public Gun() {
-		gunPWM = new Jaguar(0); //TEMP
+		roller = new Relay(RobotMap.rollerRelay);
+		pusher = new Relay(RobotMap.pusherRelay);
 	}
 	
 	@Override
@@ -17,11 +23,21 @@ public class Gun extends Subsystem {
 
 	}
 	
-	public void setFiring(boolean firing) {
-		if (firing)
-			gunPWM.set(0.5);
-		else
-			gunPWM.set(0);
+	public void setRoller(Value value) {
+		roller.set(value);
+	}
+		
+	
+	public void setPusher(Value value) {
+		pusher.set(value);
+	}
+	
+	public Value getRollerValue() {
+		return roller.get();
+	}
+	
+	public Value getPusherValue() {
+		return pusher.get();
 	}
 
 }

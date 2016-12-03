@@ -39,6 +39,7 @@ public class RobotMap {
 	public static int bLeftDriveTalon = 2;
 	public static int bRightDriveTalon = 3;
 	public static int turretTalon = 4;
+	public static int gunTalon = 5;
 	
 	//Analog In
 	public static int turretGyro = 1;

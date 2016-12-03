@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+    	gun.setPower(false);
     }
 	
 	public void disabledPeriodic() {
@@ -99,6 +99,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) 
         	autonomousCommand.cancel();
+        gun.setPower(true);
     }
 
     /**
@@ -112,6 +113,6 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        LiveWindow.run();
+        LiveWindow.run();s
     }
 }

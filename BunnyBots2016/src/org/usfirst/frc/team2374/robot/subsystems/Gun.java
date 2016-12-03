@@ -5,16 +5,19 @@ import org.usfirst.frc.team2374.robot.commands.GunControl;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Gun extends Subsystem {
 
 	Relay roller;
 	Relay pusher;
+	TalonSRX powerControl;
 	
 	public Gun() {
 		roller = new Relay(RobotMap.rollerRelay);
 		pusher = new Relay(RobotMap.pusherRelay);
+		powerControl = new TalonSRX(RobotMap.gunTalon);
 	}
 	
 	@Override
@@ -35,6 +38,13 @@ public class Gun extends Subsystem {
 			pusher.set(Value.kForward);
 		else
 			pusher.set(Value.kOff);
+	}
+	
+	public void setPower(boolean setPower) {
+		if (setPower)
+			powerControl.set(0.5);
+		else
+			powerControl.set(0);
 	}
 
 }

@@ -107,6 +107,11 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        double[] dtrainValues = drivetrain.getMotorValues();
+        SmartDashboard.putNumber("fLeft - Red", dtrainValues[0]);
+        SmartDashboard.putNumber("fRight - Purple", dtrainValues[1]);
+        SmartDashboard.putNumber("bLeft - Blue", dtrainValues[2]);
+        SmartDashboard.putNumber("bRight - Yellow", dtrainValues[3]);
     }
     
     /**

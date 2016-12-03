@@ -49,4 +49,13 @@ public class Drivetrain extends Subsystem {
 		robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
 	}
 	
+	public double[] getMotorValues() {
+		double[] values = new double[4];
+		values[0] = fLeft.get();
+		values[1] = fRight.get();
+		values[2] = bLeft.get();
+		values[3] = bRight.get();
+		return values;
+	}
+	
 }

@@ -28,7 +28,7 @@ public class MecanumDrive extends Command {
 
 	@Override
 	protected void end() {
-		Robot.drivetrain.meanumDrive(0, 0, 0);
+		Robot.drivetrain.mecanumDrive(0, 0, 0);
 
 	}
 

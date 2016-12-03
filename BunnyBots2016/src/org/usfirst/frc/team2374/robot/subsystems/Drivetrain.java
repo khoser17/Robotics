@@ -49,7 +49,7 @@ public class Drivetrain extends Subsystem {
 				ahrs.getAngle());
 	}
 	
-	public void meanumDrive(double x, double y, double rotation) {
+	public void mecanumDrive(double x, double y, double rotation) {
 		robotDrive.mecanumDrive_Cartesian(x, y, rotation, ahrs.getAngle());
 	}
 	
@@ -60,4 +60,17 @@ public class Drivetrain extends Subsystem {
 	public void zeroGyro() {
 		ahrs.zeroYaw();
 	}
+	
+	public void resetDisplancement() {
+		ahrs.resetDisplacement();
+	}
+	
+	public float getDisplacementX() {
+		return ahrs.getDisplacementX();
+	}
+	
+	public float getDisplacementY() {
+		return ahrs.getDisplacementY();
+	}
+	
 }

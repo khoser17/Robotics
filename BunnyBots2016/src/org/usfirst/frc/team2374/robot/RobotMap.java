@@ -23,10 +23,15 @@ public class RobotMap {
 	//Razer Sabertooth
 	public static int rsLeftAxisX = 0;
 	public static int rsLeftAxisY = 1;
-	public static int rsRightAxisX = 2;
+	public static int rsRightAxisX = 4;
 	public static int rsButtonA = 1;
 	public static int rsButtonB = 2;
 	public static int rsButtonX = 3;
+	
+	//Logitech Controller
+	public static int logiLeftAxisX = 0;
+	public static int logiButton2 = 2;
+	public static int logiButton6 = 6;
 	
 	//PWN
 	public static int fLeftDriveTalon = 0;

@@ -1,11 +1,10 @@
 package org.usfirst.frc.team2374.robot.subsystems;
 
 import org.usfirst.frc.team2374.robot.RobotMap;
+import org.usfirst.frc.team2374.robot.commands.GunControl;
 
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Gun extends Subsystem {
@@ -20,24 +19,22 @@ public class Gun extends Subsystem {
 	
 	@Override
 	protected void initDefaultCommand() {
-
+		setDefaultCommand(new GunControl());
 	}
 	
-	public void setRoller(Value value) {
-		roller.set(value);
+	public void setRoller(boolean setForward) {
+		if (setForward)
+			roller.set(Value.kForward);
+		else
+			roller.set(Value.kOff);
 	}
 		
 	
-	public void setPusher(Value value) {
-		pusher.set(value);
-	}
-	
-	public Value getRollerValue() {
-		return roller.get();
-	}
-	
-	public Value getPusherValue() {
-		return pusher.get();
+	public void setPusher(boolean setForward) {
+		if (setForward)
+			pusher.set(Value.kForward);
+		else
+			pusher.set(Value.kOff);
 	}
 
 }

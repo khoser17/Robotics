@@ -3,8 +3,6 @@ package org.usfirst.frc.team2374.robot.subsystems;
 import org.usfirst.frc.team2374.robot.RobotMap;
 import org.usfirst.frc.team2374.robot.commands.MecanumDrive;
 
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
@@ -18,7 +16,6 @@ public class Drivetrain extends Subsystem {
 
 	SpeedController fLeft, fRight, bLeft, bRight;
 	RobotDrive robotDrive;
-	AHRS ahrs; //navX sensor
 	
 	public Drivetrain() {
 		fLeft = new TalonSRX(RobotMap.fLeftDriveTalon);
@@ -34,7 +31,6 @@ public class Drivetrain extends Subsystem {
 		LiveWindow.addActuator("Drive Motor", "bLeft", (LiveWindowSendable) bLeft);
 		LiveWindow.addActuator("Drive Motor", "fRight", (LiveWindowSendable) fRight);
 		LiveWindow.addActuator("Drive Motor", "bRight", (LiveWindowSendable) bRight);
-		ahrs = new AHRS(SPI.Port.kMXP);
 	}
 	
 	@Override
@@ -46,31 +42,11 @@ public class Drivetrain extends Subsystem {
 		robotDrive.mecanumDrive_Cartesian(joy.getRawAxis(RobotMap.rsLeftAxisX),
 				joy.getRawAxis(RobotMap.rsLeftAxisY),
 				joy.getRawAxis(RobotMap.rsRightAxisX),
-				ahrs.getAngle());
+				0);
 	}
 	
 	public void mecanumDrive(double x, double y, double rotation) {
-		robotDrive.mecanumDrive_Cartesian(x, y, rotation, ahrs.getAngle());
-	}
-	
-	public double getAngle() {
-		return ahrs.getAngle();
-	}
-	
-	public void zeroGyro() {
-		ahrs.zeroYaw();
-	}
-	
-	public void resetDisplancement() {
-		ahrs.resetDisplacement();
-	}
-	
-	public float getDisplacementX() {
-		return ahrs.getDisplacementX();
-	}
-	
-	public float getDisplacementY() {
-		return ahrs.getDisplacementY();
+		robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
 	}
 	
 }

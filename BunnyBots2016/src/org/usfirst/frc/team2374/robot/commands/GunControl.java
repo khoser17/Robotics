@@ -4,37 +4,31 @@ import org.usfirst.frc.team2374.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveStraight extends Command {
+public class GunControl extends Command {
 	
-	double meters;
-	double speed;
-	
-	public DriveStraight(double meters, double speed) {
-		requires(Robot.drivetrain);
-		this.meters = meters;
-		this.speed = speed;
+	public GunControl() {
+		requires(Robot.gun);
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.drivetrain.resetDisplancement();
 	}
 
 	@Override
 	protected void execute() {
-		Robot.drivetrain.mecanumDrive(0, speed, 0);
+		Robot.gun.setRoller(Robot.oi.turretButton2.get());
+		Robot.gun.setPusher(Robot.oi.turretButton6.get());
 	}
 
 	@Override
 	protected boolean isFinished() {
-		if (Robot.drivetrain.getDisplacementY() >= meters)
-			return true;
 		return false;
 	}
 
 	@Override
 	protected void end() {
-		Robot.drivetrain.mecanumDrive(0, 0, 0);
+		Robot.gun.setRoller(false);
+		Robot.gun.setPusher(false);
 	}
 
 	@Override

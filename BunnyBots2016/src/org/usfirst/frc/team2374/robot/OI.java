@@ -1,10 +1,5 @@
 package org.usfirst.frc.team2374.robot;
 
-import org.usfirst.frc.team2374.robot.commands.FireGunHold;
-import org.usfirst.frc.team2374.robot.commands.FireGunOnce;
-import org.usfirst.frc.team2374.robot.commands.ZeroDriveGyro;
-import org.usfirst.frc.team2374.robot.commands.ZeroTurretGyro;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -42,26 +37,15 @@ public class OI {
 	
 	public Joystick driverJoy;
 	public Joystick turretJoy;
-	public JoystickButton driverButtonX;
-	public JoystickButton turretButtonA;
-	public JoystickButton turretButtonX;
-	public JoystickButton turretButtonB;
+	public JoystickButton turretButton2;
+	public JoystickButton turretButton6;
 	
 	public OI() {
 		driverJoy = new Joystick(RobotMap.driverJoy);
 		turretJoy = new Joystick(RobotMap.turretJoy);
 		
-		driverButtonX = new JoystickButton(driverJoy, RobotMap.rsButtonX);
-		
-		turretButtonA = new JoystickButton(turretJoy, RobotMap.rsButtonA);
-		turretButtonX = new JoystickButton(turretJoy, RobotMap.rsButtonX);
-		turretButtonB = new JoystickButton(turretJoy, RobotMap.rsButtonB);
-		
-		driverButtonX.whenPressed(new ZeroDriveGyro());
-		
-		turretButtonA.whenPressed(new FireGunOnce());
-		turretButtonX.whenPressed(new ZeroTurretGyro());
-		turretButtonB.whenPressed(new FireGunHold());
+		turretButton2 = new JoystickButton(turretJoy, RobotMap.logiButton2);
+		turretButton6 = new JoystickButton(turretJoy, RobotMap.logiButton6);
 	}
 	
 	public Joystick getDriverJoy() {

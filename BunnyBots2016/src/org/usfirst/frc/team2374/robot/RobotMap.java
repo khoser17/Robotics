@@ -35,9 +35,9 @@ public class RobotMap {
 	
 	//PWN
 	public static int fLeftDriveTalon = 0;
-	public static int fRightDriveTalon = 1;
+	public static int fRightDriveTalon = 3;
 	public static int bLeftDriveTalon = 2;
-	public static int bRightDriveTalon = 3;
+	public static int bRightDriveTalon = 1;
 	public static int turretTalon = 4;
 	public static int gunTalon = 5;
 	

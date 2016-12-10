@@ -5,7 +5,7 @@ import org.usfirst.frc.team2374.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class GunControl extends Command {
-	
+
 	public GunControl() {
 		requires(Robot.gun);
 	}
@@ -17,7 +17,8 @@ public class GunControl extends Command {
 	@Override
 	protected void execute() {
 		Robot.gun.setRoller(Robot.oi.turretButton2.get());
-		Robot.gun.setPusher(Robot.oi.turretButton6.get());
+		Robot.gun.setPusher(Robot.oi.turretButton2.get()
+				&& Robot.oi.turretButton6.get());
 	}
 
 	@Override

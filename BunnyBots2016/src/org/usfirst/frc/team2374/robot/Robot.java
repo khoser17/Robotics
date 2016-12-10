@@ -2,10 +2,12 @@
 package org.usfirst.frc.team2374.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team2374.robot.commands.ExampleCommand;
+
+import org.usfirst.frc.team2374.robot.commands.DriveStraight;
 import org.usfirst.frc.team2374.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2374.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2374.robot.subsystems.Gun;
@@ -29,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Turret turret;
 	public static Gun gun;
 	
+	Preferences prefs;
     SendableChooser autoChooser;
     Command autonomousCommand;
 
@@ -42,10 +45,13 @@ public class Robot extends IterativeRobot {
 		turret = new Turret();
 		gun = new Gun();
         autoChooser = new SendableChooser();
-        autoChooser.addDefault("Default Auto", "Default Auto");
+        autoChooser.addDefault("Drive Straight", "Drive Straight");
         autoChooser.addObject("Do Nothing", "Do Nothing");
-        SmartDashboard.putData("Auto mode", autoChooser);
+        SmartDashboard.putData("Autonomus Command", autoChooser);
         SmartDashboard.putData(Scheduler.getInstance());
+        prefs = Preferences.getInstance();
+        prefs.putDouble("DriveStraight - Meters", 5);
+        prefs.putDouble("DriveStraight - Speed", 0.5);
     }
 	
 	/**
@@ -71,13 +77,15 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+    	double meters = prefs.getDouble("DriveStraight - Meters", 5);
+    	double speed = prefs.getDouble("DriveStraight - Speed", 0.5);
+        String autoSelected = SmartDashboard.getString("Autonomus Command", "Drive Straight");
 		switch(autoSelected){
-		case "Default Auto":
+		case "Drive Straight":
 		default:
-			autonomousCommand = new ExampleCommand();
+			autonomousCommand = new DriveStraight(meters, speed);
 		case "Do Nothing":
-			autonomousCommand = new ExampleCommand();
+			autonomousCommand = null;
 			break;
 		} 
     	

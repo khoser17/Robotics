@@ -90,6 +90,19 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        double[] dtrainValues = drivetrain.getMotorValues();
+        SmartDashboard.putNumber("fLeftCIM", dtrainValues[0]);
+        SmartDashboard.putNumber("fRightCIM", dtrainValues[1]);
+        SmartDashboard.putNumber("bLeftCIM", dtrainValues[2]);
+        SmartDashboard.putNumber("bRightCIM", dtrainValues[3]);
+        SmartDashboard.putNumber("gyroAngle", drivetrain.getGyro());
+        SmartDashboard.putNumber("displacementX", drivetrain.getDisplacementX());
+        SmartDashboard.putNumber("displacementY", drivetrain.getDisplacementY());
+        SmartDashboard.putBoolean("isCoupled", drivetrain.isCoupled());
+        SmartDashboard.putNumber("turretCIM", turret.getMotorValue());
+        SmartDashboard.putNumber("gunPower", gun.getPowerValue());
+        SmartDashboard.putBoolean("isRolling", gun.isRolling());
+        SmartDashboard.putBoolean("isPushing", gun.isPushing());
     }
 
     public void teleopInit() {
@@ -108,10 +121,18 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         double[] dtrainValues = drivetrain.getMotorValues();
-        SmartDashboard.putNumber("fLeft - Red", dtrainValues[0]);
-        SmartDashboard.putNumber("fRight - Purple", dtrainValues[1]);
-        SmartDashboard.putNumber("bLeft - Blue", dtrainValues[2]);
-        SmartDashboard.putNumber("bRight - Yellow", dtrainValues[3]);
+        SmartDashboard.putNumber("fLeftCIM", dtrainValues[0]);
+        SmartDashboard.putNumber("fRightCIM", dtrainValues[1]);
+        SmartDashboard.putNumber("bLeftCIM", dtrainValues[2]);
+        SmartDashboard.putNumber("bRightCIM", dtrainValues[3]);
+        SmartDashboard.putNumber("gyroAngle", drivetrain.getGyro());
+        SmartDashboard.putNumber("displacementX", drivetrain.getDisplacementX());
+        SmartDashboard.putNumber("displacementY", drivetrain.getDisplacementY());
+        SmartDashboard.putBoolean("isCoupled", drivetrain.isCoupled());
+        SmartDashboard.putNumber("turretCIM", turret.getMotorValue());
+        SmartDashboard.putNumber("gunPower", gun.getPowerValue());
+        SmartDashboard.putBoolean("isRolling", gun.isRolling());
+        SmartDashboard.putBoolean("isPushing", gun.isPushing());
     }
     
     /**

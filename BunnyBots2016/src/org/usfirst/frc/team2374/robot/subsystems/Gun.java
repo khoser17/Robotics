@@ -46,5 +46,21 @@ public class Gun extends Subsystem {
 		else
 			powerControl.set(0);
 	}
+	
+	public boolean isRolling() {
+		if (roller.get().equals(Value.kForward))
+			return true;
+		return false;
+	}
+	
+	public boolean isPushing() {
+		if (pusher.get().equals(Value.kForward))
+			return true;
+		return false;
+	}
+	
+	public double getPowerValue() {
+		return powerControl.get();
+	}
 
 }

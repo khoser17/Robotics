@@ -29,4 +29,8 @@ public class Turret extends Subsystem {
 		motor.set(speed);
 	}
 	
+	public double getMotorValue() {
+		return motor.get();
+	}
+	
 }

@@ -77,6 +77,10 @@ public class Drivetrain extends Subsystem {
 		ahrs.reset();
 	}
 	
+	public double getGyro() {
+		return ahrs.getAngle();
+	}
+	
 	public void resetDisplacement() {
 		ahrs.resetDisplacement();
 	}
@@ -91,6 +95,10 @@ public class Drivetrain extends Subsystem {
 	
 	public void toggleCouple() {
 		isCoupled = !isCoupled;
+	}
+	
+	public boolean isCoupled() {
+		return isCoupled;
 	}
 
 }

@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -39,7 +40,7 @@ public class Drivetrain extends Subsystem {
 				(LiveWindowSendable) fRight);
 		LiveWindow.addActuator("Drive Motor", "bRight",
 				(LiveWindowSendable) bRight);
-		ahrs = new AHRS(SPI.Port.kMXP);
+		ahrs = new AHRS(SerialPort.Port.kMXP);
 		isCoupled = false;
 	}
 

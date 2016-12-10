@@ -24,9 +24,8 @@ public class RobotMap {
 	public static int rsLeftAxisX = 0;
 	public static int rsLeftAxisY = 1;
 	public static int rsRightAxisX = 4;
-	public static int rsButtonA = 1;
-	public static int rsButtonB = 2;
-	public static int rsButtonX = 3;
+	public static int rsButtonLB = 5;
+	public static int rsButtonRB = 6;
 	
 	//Logitech Controller
 	public static int logiLeftAxisX = 0;

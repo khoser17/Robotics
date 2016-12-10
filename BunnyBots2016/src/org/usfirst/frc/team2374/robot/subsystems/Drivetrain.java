@@ -3,8 +3,11 @@ package org.usfirst.frc.team2374.robot.subsystems;
 import org.usfirst.frc.team2374.robot.RobotMap;
 import org.usfirst.frc.team2374.robot.commands.MecanumDrive;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,6 +18,8 @@ public class Drivetrain extends Subsystem {
 
 	SpeedController fLeft, fRight, bLeft, bRight;
 	RobotDrive robotDrive;
+	AHRS ahrs;
+	boolean isCoupled;
 
 	public Drivetrain() {
 		fLeft = new TalonSRX(RobotMap.fLeftDriveTalon);
@@ -34,6 +39,8 @@ public class Drivetrain extends Subsystem {
 				(LiveWindowSendable) fRight);
 		LiveWindow.addActuator("Drive Motor", "bRight",
 				(LiveWindowSendable) bRight);
+		ahrs = new AHRS(SPI.Port.kMXP);
+		isCoupled = false;
 	}
 
 	@Override
@@ -42,9 +49,15 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void mecanumDrive(Joystick joy) {
+		double angle;
+		if (isCoupled)
+			angle = 0;
+		else
+			angle = ahrs.getAngle();
 		robotDrive.mecanumDrive_Cartesian(joy.getRawAxis(RobotMap.rsLeftAxisY),
 				joy.getRawAxis(RobotMap.rsRightAxisX),
-				-(joy.getRawAxis(RobotMap.rsLeftAxisX)), 0);
+				-joy.getRawAxis(RobotMap.rsLeftAxisX),
+				angle);
 	}
 
 	public void mecanumDrive(double x, double y, double rotation) {
@@ -58,6 +71,26 @@ public class Drivetrain extends Subsystem {
 		values[2] = bLeft.get();
 		values[3] = bRight.get();
 		return values;
+	}
+	
+	public void zeroGyro() {
+		ahrs.reset();
+	}
+	
+	public void resetDisplacement() {
+		ahrs.resetDisplacement();
+	}
+	
+	public float getDisplacementX() {
+		return ahrs.getDisplacementX();
+	}
+	
+	public float getDisplacementY() {
+		return ahrs.getDisplacementY();
+	}
+	
+	public void toggleCouple() {
+		isCoupled = !isCoupled;
 	}
 
 }

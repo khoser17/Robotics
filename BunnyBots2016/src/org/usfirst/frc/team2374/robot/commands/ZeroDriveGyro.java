@@ -4,37 +4,32 @@ import org.usfirst.frc.team2374.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class MecanumDrive extends Command {
+public class ZeroDriveGyro extends Command {
 	
-	public MecanumDrive() {
+	public ZeroDriveGyro() {
 		requires(Robot.drivetrain);
 	}
 
 	@Override
 	protected void initialize() {
-
+		Robot.drivetrain.zeroGyro();
 	}
 
 	@Override
 	protected void execute() {
-		Robot.drivetrain.mecanumDrive(Robot.oi.driverJoy);
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	@Override
 	protected void end() {
-		Robot.drivetrain.mecanumDrive(0, 0, 0);
-
 	}
 
 	@Override
 	protected void interrupted() {
-		end();
-
 	}
 
 }

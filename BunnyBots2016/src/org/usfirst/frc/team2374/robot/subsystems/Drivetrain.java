@@ -7,7 +7,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.TalonSRX;
@@ -57,8 +56,7 @@ public class Drivetrain extends Subsystem {
 			angle = ahrs.getAngle();
 		robotDrive.mecanumDrive_Cartesian(joy.getRawAxis(RobotMap.rsLeftAxisY),
 				joy.getRawAxis(RobotMap.rsRightAxisX),
-				-joy.getRawAxis(RobotMap.rsLeftAxisX),
-				angle);
+				-joy.getRawAxis(RobotMap.rsLeftAxisX), angle);
 	}
 
 	public void mecanumDrive(double x, double y, double rotation) {
@@ -73,31 +71,31 @@ public class Drivetrain extends Subsystem {
 		values[3] = bRight.get();
 		return values;
 	}
-	
+
 	public void zeroGyro() {
 		ahrs.reset();
 	}
-	
+
 	public double getGyro() {
 		return ahrs.getAngle();
 	}
-	
+
 	public void resetDisplacement() {
 		ahrs.resetDisplacement();
 	}
-	
+
 	public float getDisplacementX() {
 		return ahrs.getDisplacementX();
 	}
-	
+
 	public float getDisplacementY() {
 		return ahrs.getDisplacementY();
 	}
-	
+
 	public void toggleCouple() {
 		isCoupled = !isCoupled;
 	}
-	
+
 	public boolean isCoupled() {
 		return isCoupled;
 	}

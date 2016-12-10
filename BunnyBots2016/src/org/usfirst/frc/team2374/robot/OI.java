@@ -1,7 +1,5 @@
 package org.usfirst.frc.team2374.robot;
 
-import org.usfirst.frc.team2374.robot.commands.ToggleCouple;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -55,7 +53,7 @@ public class OI {
 		driverButtonRB = new JoystickButton(driverJoy, RobotMap.rsButtonRB);
 
 		// driverButtonLB.whenPressed(new ZeroDriveGyro());
-		driverButtonRB.whenPressed(new ToggleCouple());
+		// driverButtonRB.whenPressed(new ToggleCouple());
 
 		turretJoy = new Joystick(RobotMap.turretJoy);
 

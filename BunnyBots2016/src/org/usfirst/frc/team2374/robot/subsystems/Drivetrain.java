@@ -27,6 +27,7 @@ public class Drivetrain extends Subsystem {
 		bLeft = new TalonSRX(RobotMap.bLeftDriveTalon);
 		bRight = new TalonSRX(RobotMap.bRightDriveTalon);
 		robotDrive = new RobotDrive(fLeft, bLeft, fRight, bRight);
+		robotDrive.setSafetyEnabled(false);
 		robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
 		robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
 		robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);

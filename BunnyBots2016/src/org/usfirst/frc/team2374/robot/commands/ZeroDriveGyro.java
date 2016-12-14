@@ -4,15 +4,16 @@ import org.usfirst.frc.team2374.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToggleCouple extends Command {
+public class ZeroDriveGyro extends Command {
 
-	public ToggleCouple() {
-		// requires(Robot.drivetrain); // this throws an error for some reason, but works without it.
+	public ZeroDriveGyro() {
+		// requires(Robot.drivetrain); // commented because doesn't work for
+		// some reason, but works when commented
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.drivetrain.toggleCouple();
+		Robot.drivetrain.zeroGyro();
 	}
 
 	@Override

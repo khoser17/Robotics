@@ -81,6 +81,14 @@ public class Drivetrain extends Subsystem {
 		return ahrs.getAngle();
 	}
 
+	public double getAcclerationX() {
+		return ahrs.getRawAccelX();
+	}
+
+	public double getAcclerationY() {
+		return ahrs.getRawAccelY();
+	}
+
 	public void resetDisplacement() {
 		ahrs.resetDisplacement();
 	}

@@ -55,7 +55,7 @@ public class OI {
 		driverButtonLB = new JoystickButton(driverJoy, RobotMap.rsButtonLB);
 		driverButtonRB = new JoystickButton(driverJoy, RobotMap.rsButtonRB);
 
-		driverButtonLB.whenPressed(new ZeroDriveGyro());
+		driverButtonRB.whenPressed(new ZeroDriveGyro());
 		driverButtonRB.whenPressed(new ToggleCouple());
 
 		turretJoy = new Joystick(RobotMap.turretJoy);
